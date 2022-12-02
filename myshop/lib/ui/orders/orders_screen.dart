@@ -1,9 +1,11 @@
+// TODO Implement this library.import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
-import 'oder_manager.dart';
-import 'oder_item_card.dart';
+import 'package:myshop/ui/orders/orders_manager.dart';
+import '../orders/oder_item_card.dart';
 
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({super.key});
+  //static const RoutName = '/order';
   @override
   Widget build(BuildContext context) {
     print('building orders');

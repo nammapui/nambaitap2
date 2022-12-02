@@ -1,3 +1,5 @@
+import 'package:myshop/models/product.dart';
+
 import '../../models/product.dart';
 
 class ProductsManager {

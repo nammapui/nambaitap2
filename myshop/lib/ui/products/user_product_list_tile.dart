@@ -1,4 +1,7 @@
+// TODO Implement this library.import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:myshop/models/product.dart';
+
 import '../../models/product.dart';
 
 class UserProductListTile extends StatelessWidget {
