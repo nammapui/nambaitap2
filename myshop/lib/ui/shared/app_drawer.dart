@@ -1,10 +1,6 @@
-// TODO Implement this library.import 'package:flutter/material.dart';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../orders/orders_screen.dart';
-import '../products/user_product_screen.dart';
 import '../products/user_products_screen.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -31,7 +27,7 @@ class AppDrawer extends StatelessWidget {
           leading: const Icon(Icons.payment),
           title: const Text('Orders'),
           onTap: () {
-            Navigator.of(context).pushReplacementNamed(OrdersScreen.RoutName);
+            Navigator.of(context).pushReplacementNamed(OrdersScreen.routeName);
           },
         ),
         const Divider(),
@@ -39,8 +35,7 @@ class AppDrawer extends StatelessWidget {
           leading: const Icon(Icons.edit),
           title: const Text('Manage Products'),
           onTap: () {
-            Navigator.of(context)
-                .pushReplacementNamed(UserProductsScreen.routeName);
+            Navigator.of(context).pushReplacementNamed(UserProductsScreen.routeName);
           },
         )
       ]),

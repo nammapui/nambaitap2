@@ -1,14 +1,10 @@
-// TODO Implement this library.import 'package:flutter/material.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:myshop/models/product.dart';
 
 import '../../models/product.dart';
 
-class ProductDetaiScreen extends StatelessWidget {
+class ProductDetailScreen extends StatelessWidget {
   static const routeName = '/product-detail';
-  const ProductDetaiScreen(
+  const ProductDetailScreen(
     this.product, {
     super.key,
   });

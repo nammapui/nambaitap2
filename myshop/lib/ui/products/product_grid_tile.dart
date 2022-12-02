@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myshop/ui/cart/cart_manager.dart';
 import 'package:provider/provider.dart';
 import '../../models/product.dart';
-import 'products_detail_screen.dart';
+import 'product_detail_screen.dart';
 
 class ProductGridTile extends StatelessWidget {
   const ProductGridTile(
@@ -21,7 +21,7 @@ class ProductGridTile extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.of(context).pushNamed(
-                ProductDetaiScreen.routeName,
+                ProductDetailScreen.routeName,
                 arguments: product.id,
               );
             },
@@ -29,7 +29,7 @@ class ProductGridTile extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (ctx) => ProductDetaiScreen(product),
+                    builder: (ctx) => ProductDetailScreen(product),
                   ),
                 );
               },

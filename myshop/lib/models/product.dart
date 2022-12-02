@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/foundation.dart';
 
 class Product {
   final String? id;
@@ -16,7 +16,7 @@ class Product {
     required this.imageUrl,
     isFavorite = false,
   }) : _isFavorite = ValueNotifier(isFavorite);
-
+  
   set isFavorite(bool newValue) {
     _isFavorite.value = newValue;
   }
