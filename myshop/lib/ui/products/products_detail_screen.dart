@@ -6,9 +6,9 @@ import 'package:myshop/models/product.dart';
 
 import '../../models/product.dart';
 
-class ProductetaDetaiScreen extends StatelessWidget {
+class ProductDetaiScreen extends StatelessWidget {
   static const routeName = '/product-detail';
-  const ProductetaDetaiScreen(
+  const ProductDetaiScreen(
     this.product, {
     super.key,
   });

@@ -1,7 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:myshop/ui/products/products_detail_screen.dart';
-import '../../../models/product.dart';
+import 'package:myshop/ui/cart/cart_manager.dart';
+import 'package:provider/provider.dart';
+import '../../models/product.dart';
+import 'products_detail_screen.dart';
 
 class ProductGridTile extends StatelessWidget {
   const ProductGridTile(
@@ -14,42 +15,50 @@ class ProductGridTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: GridTile(
-        footer: buildGridFooterBar(context),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (ctx) => ProductetaDetaiScreen(product),
+        borderRadius: BorderRadius.circular(10),
+        child: GridTile(
+          footer: buildGridFooterBar(context),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(
+                ProductDetaiScreen.routeName,
+                arguments: product.id,
+              );
+            },
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => ProductDetaiScreen(product),
+                  ),
+                );
+              },
+              child: Image.network(
+                product.imageUrl,
+                fit: BoxFit.cover,
               ),
-            );
-          },
-          child: Image.network(
-            product.imageUrl,
-            fit: BoxFit.cover,
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   Widget buildGridFooterBar(BuildContext context) {
     return GridTileBar(
       backgroundColor: Colors.black87,
       leading: ValueListenableBuilder<bool>(
-          valueListenable: product.isFavoriteListenable,
-          builder: (ctx, isFavorite, child) {
-            return IconButton(
-              icon: Icon(
-                isFavorite ? Icons.favorite : Icons.favorite_border,
-              ),
-              color: Theme.of(context).colorScheme.secondary,
-              onPressed: () {
-                product.isFavorite = !isFavorite;
-              },
-            );
-          }),
+        valueListenable: product.isFavoriteListenable,
+        builder: (ctx, isFavorite, child) {
+          return IconButton(
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+            ),
+            color: Theme.of(context).colorScheme.secondary,
+            onPressed: () {
+              product.isFavorite = !isFavorite;
+            },
+          );
+        },
+      ),
       title: Text(
         product.title,
         textAlign: TextAlign.center,
@@ -59,7 +68,24 @@ class ProductGridTile extends StatelessWidget {
           Icons.shopping_cart,
         ),
         onPressed: () {
-          print('Add item to cart');
+          final cart = context.read<CartManager>();
+          cart.addItem(product);
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(
+                content: const Text(
+                  'Item added to cart',
+                ),
+                duration: const Duration(seconds: 2),
+                action: SnackBarAction(
+                  label: 'UNDO',
+                  onPressed: () {
+                    cart.removeSingleItem(product.id!);
+                  },
+                ),
+              ),
+            );
         },
         color: Theme.of(context).colorScheme.secondary,
       ),

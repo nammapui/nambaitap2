@@ -17,7 +17,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => ProductsManager(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => CartManager(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => OrdersManager(),
+        )
+      ],
+      child: MaterialApp(
         title: 'My Shop',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -39,11 +51,36 @@ class MyApp extends StatelessWidget {
         routes: {
           CartScreen.routeName: (ctx) => const CartScreen(),
           OrdersScreen.RoutName: (ctx) => const OrdersScreen(),
-          UserProductsScreen.RouteNam: (ctx) => const UserProductsScreen(),
+          UserProductsScreen.routeName: (ctx) => const UserProductsScreen(),
           //home: const SafeArea(
           //child: OrdersScreen(),
           //),
-        });
+        },
+        onGenerateRoute: (settings) {
+          if (settings.name == ProductDetaiScreen.routeName) {
+            final productId = settings.arguments as String;
+            return MaterialPageRoute(
+              builder: (ctx) {
+                return ProductDetaiScreen(
+                  ctx.read<ProductsManager>().findById(productId)!,
+                );
+              },
+            );
+          }
+          /*if (settings.name == EditProductScreen.routeName) {
+            final productId = settings.arguments as String?;
+            return MaterialPageRoute(
+              builder: (ctx) {
+                return EditProductScreen(
+                  productId != null
+                      ? ctx.read<ProductsManager>().findById(productId)
+                      : null,
+                );*/
+
+          return null;
+        },
+      ),
+    );
   }
 }
 
