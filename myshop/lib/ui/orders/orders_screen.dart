@@ -5,7 +5,7 @@ import '../orders/oder_item_card.dart';
 
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({super.key});
-  //static const RoutName = '/order';
+  static const RoutName = '/order';
   @override
   Widget build(BuildContext context) {
     print('building orders');
