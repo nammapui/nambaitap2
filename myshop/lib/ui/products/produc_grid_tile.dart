@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:myshop/ui/products/products_detail_screen.dart';
 import '../../../models/product.dart';
@@ -36,15 +37,19 @@ class ProductGridTile extends StatelessWidget {
   Widget buildGridFooterBar(BuildContext context) {
     return GridTileBar(
       backgroundColor: Colors.black87,
-      leading: IconButton(
-        icon: Icon(
-          product.isFavorite ? Icons.favorite : Icons.favorite_border,
-        ),
-        color: Theme.of(context).colorScheme.secondary,
-        onPressed: () {
-          print('Toggle a favorite product');
-        },
-      ),
+      leading: ValueListenableBuilder<bool>(
+          valueListenable: product.isFavoriteListenable,
+          builder: (ctx, isFavorite, child) {
+            return IconButton(
+              icon: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+              ),
+              color: Theme.of(context).colorScheme.secondary,
+              onPressed: () {
+                product.isFavorite = !isFavorite;
+              },
+            );
+          }),
       title: Text(
         product.title,
         textAlign: TextAlign.center,
