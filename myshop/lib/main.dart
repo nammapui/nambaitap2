@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myshop1/ui/cart/cart_manager.dart';
-import 'package:myshop1/ui/cart/cart_screen.dart';
-import 'package:myshop1/ui/orders/orders_screen.dart';
-import 'package:myshop1/ui/products/edit_product_screen.dart';
-import 'package:myshop1/ui/screens.dart';
+import 'package:myshop/ui/cart/cart_manager.dart';
+import 'package:myshop/ui/cart/cart_screen.dart';
+import 'package:myshop/ui/orders/orders_screen.dart';
+import 'package:myshop/ui/products/edit_product_screen.dart';
+import 'package:myshop/ui/screens.dart';
 import 'ui/products/products_manager.dart';
 import 'ui/products/product_detail_screen.dart';
 import 'ui/products/product_overview_screen.dart';
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-        title: 'My Shop',
+        title: 'Mặt Hàng Nông Sản',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           fontFamily: 'Lato',
@@ -50,16 +50,14 @@ class MyApp extends StatelessWidget {
           UserProductsScreen.routeName: (ctx) => const UserProductsScreen(),
         },
         onGenerateRoute: (settings) {
-           if (settings.name == ProductDetailScreen.routeName) {
+          if (settings.name == ProductDetailScreen.routeName) {
             final productId = settings.arguments as String;
-            return MaterialPageRoute(
-              builder: (ctx) {
-                return ProductDetailScreen(
-                  ctx.read<ProductsManager>().findById(productId)!,
-                );
-              }
-            );
-          } 
+            return MaterialPageRoute(builder: (ctx) {
+              return ProductDetailScreen(
+                ctx.read<ProductsManager>().findById(productId)!,
+              );
+            });
+          }
           if (settings.name == EditProductScreen.routeName) {
             final productId = settings.arguments as String?;
             return MaterialPageRoute(

@@ -6,37 +6,52 @@ class ProductsManager with ChangeNotifier {
   final List<Product> _items = [
     Product(
       id: 'p1',
-      title: 'Red Shirt',
-      description: 'A red shirt - it is pretty red!',
-      price: 29.99,
+      title: 'Cà Chua Xanh ',
+      description: 'Loại Cà Chua Đến Từ Châu Âu Ngon Bổ rẻ!',
+      price: 2.99,
       imageUrl:
-          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+          'https://cdn.pixabay.com/photo/2016/03/09/03/20/eggplant-400-08373800-1245207__340.jpg',
       isFavorite: true,
     ),
     Product(
       id: 'p2',
-      title: 'Trousers',
-      description: 'A nice pair of trousers.',
-      price: 59.99,
+      title: 'Gạo ST-25',
+      description: 'Gạo Ngôn Nhất Đến từ Việt Nam',
+      price: 9.99,
       imageUrl:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg',
+          'https://cdn.pixabay.com/photo/2019/02/15/03/28/rice-3997767__340.jpg',
     ),
     Product(
       id: 'p3',
-      title: 'Yellow Scarf',
-      description: 'Warm and cozy - exactly what you need for the winter.',
-      price: 19.99,
+      title: 'Cà Rốt Đà Lạt',
+      description: 'Đặt chất lượng Lên hàng đầu',
+      price: 1.99,
       imageUrl:
-          'https://live.staticflickr.com/4043/4438260868_cc79b3369d_z.jpg',
+          'https://cdn.pixabay.com/photo/2017/07/31/03/46/carrot-2556382__340.jpg',
     ),
     Product(
       id: 'p4',
-      title: 'A Pan',
-      description: 'Prepare any meal you want.',
-      price: 49.99,
+      title: 'Hành Tây',
+      description: 'Ngon Bổ Rẻ.',
+      price: 4.9,
       imageUrl:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
-      isFavorite: true,
+          'https://cdn.pixabay.com/photo/2017/07/31/04/01/onion-2556407__340.jpg',
+    ),
+    Product(
+      id: 'p4',
+      title: 'Củ Cải Đỏ',
+      description: 'Ngon Bổ Rẻ.',
+      price: 1.9,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2016/08/25/17/18/red-radish-1620106__340.jpg',
+    ),
+    Product(
+      id: 'p4',
+      title: 'dưa hấu long an',
+      description: 'Ngon Bổ Rẻ.',
+      price: 1.9,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2018/04/03/15/46/food-3287109__340.jpg',
     ),
   ];
 
